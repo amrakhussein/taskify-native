@@ -1,4 +1,4 @@
-const tasks = [
+const todos = [
     {
       id: 1,
       content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -26,5 +26,5 @@ const tasks = [
     },
   ]
   
-  export default tasks
+  export default todos
   

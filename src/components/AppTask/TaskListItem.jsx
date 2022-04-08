@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 
 
 export default function TaskListItem({task}) {
+  console.log('task: ', task);
   return (
     <View style={styles.listItemContainer}>
       <View style={styles.listItem}>

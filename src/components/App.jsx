@@ -1,73 +1,26 @@
-import { StatusBar } from 'expo-status-bar'
-import { Platform, StyleSheet, Text, View } from 'react-native'
-import { Button } from 'react-native-web'
-import TaskListItem from './AppTask/TaskListItem'
+import { useState } from 'react'
+import TaskifyHome from '../screens/TaskifyHome'
 // import { SafeAreaView } from 'react-native-web'
 // import colors from './styles/colors'
-import tasks from '../tasksData'
-console.log('tasks: ', tasks);
-
+import todos from '../tasksData'
+import TheLayout from './AppLayout/TheLayout'
 
 export default function App() {
+  // const initialized = tasks
 
-  //  Alert.alert("message", 'message', [{text: "yes", onPress: () => }, {text:'no'}])
-  // Alert.promt("title", "mss", text => console.log(text))
+  const [task, setTask] = useState(todos)
+
+  console.log('tasks: ', task)
+  const { length: NumberOfTasks } = task
+  console.log('NumberOfTasks: ', NumberOfTasks)
+
+  const addTask = (e) => {
+    console.log('e: ', e)
+  }
+
   return (
-    <View style={styles.container}>
-      <StatusBar style='auto' />
-      {/* taskify header */}
-      <View style={styles.appBar}>
-        <View style={styles.appBarItems}>
-
-        <Text style={styles.appBarBrand}>Taskify</Text>
-        {/* <Text>you have 3 tasks to finish</Text> */}
-        </View>
-      </View>
-
-      <View style={styles.taskList}>
-        {
-          tasks.map((item, idx) => (
-            
-            <TaskListItem key={idx} task={item} />
-          ))
-        }
-      </View>
-
-
-<Button title='' color=''></Button>
-     </View>
+    <TheLayout count={4}>
+      <TaskifyHome />
+    </TheLayout>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#eee',
-    // paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
-
-  },
-  appBarBrand:{
-
-    fontSize: 25,
-    fontWeight: 'bold',
-    paddingLeft: 10,
-    fontStyle:'italic',
-  },
-
-  appBar: {
-    backgroundColor:'lightblue',
-    height: 70,
-    // elevation: 50,
-  },
-  taskList: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 8,
-  },
-  appBarItems: {
-    flex:1,
-    justifyContent:'space-around',
-    alignContent:'center',
-    backgroundColor:'lightblue'
-  }
-})
